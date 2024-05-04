@@ -9,13 +9,13 @@
         ></img>
 
         <section style="opacity: 70%;" class="bg-dark text-white">
-            <h2 style="text-align: center; color: tomato;">Post</h2>
+            <h2 style="text-align: center; color: tomato;">SignIn</h2>
         
             <div style="width: 40%; margin-left: 30%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.968); " >
                 <form method="POST" style="padding: 15px;">
                     {% csrf_token %}
                     {{ form }}
-                    <input type="submit" value="Submit" class="btn btn-success" style="margin-left:43%;"></input>
+                    <input type="submit" value="SignIn" class="btn btn-success" style="margin-left:43%;"></input>
                 </form>
             </div>
         </section>
