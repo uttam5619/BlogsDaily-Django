@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,6 +20,11 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'posts:home'  %}">
                     <h6 style="color: bisque;">Home</h6>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'posts:post'  %}">
+                    <h6 style="color: bisque;">Post</h6>
                 </a>
             </li>
             <li class="nav-item">
