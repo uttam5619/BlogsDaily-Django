@@ -25,6 +25,19 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def comment_count(self):
+        return self.comment_set.all().count()
+    
+    def comments(self):
+        return self.comment_set.all()
 
+class Comment(models.Model):
+    commentId = models.AutoField(primary_key=True)
+    comment = models.CharField(max_length=500)
+    commented_on = models.ForeignKey(Post, on_delete=models.CASCADE)
+    commented_at=models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.comment
 

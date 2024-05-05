@@ -1,6 +1,7 @@
 from django.contrib import admin
 from posts.models import Post
 from posts.models import Category
+from posts.models import Comment
 
 #for configration of Category Admin
 class CategoryAdmin(admin.ModelAdmin):
@@ -13,4 +14,5 @@ class PostAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Post)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Comment)
 

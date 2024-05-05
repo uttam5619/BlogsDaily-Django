@@ -1,0 +1,70 @@
+{% extends "posts/base_layout.html" %}
+{%load crispy_forms_tags %} 
+{% load static %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'posts/css/accordian.css' %}">
+
+    <img src="https://img.freepik.com/free-vector/phoenix-logo-mascot-template_629746-21.jpg"
+        style="width: 100%; height: 100%; position:fixed; z-index: -1; object-fit: cover;"
+    ></img>
+
+    <div class="bg-dark text-white" style="min-height: 100vh; opacity:70% ;">
+
+        <section style="display: flex; column-gap: 100px; padding-left: 10%; padding-top: 50px;">
+
+            <div style="width: 30%;">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }} Image"
+                    style="height:28rem; object-fit:contain;"
+                >
+            {% else %}
+                <p></p>
+            {% endif %}
+            </div>
+
+            <div style="width:65%;">
+                <h1 style=" color: darkgrey;">{{post.title}}</h1>
+                <div>
+                    <div>author: {{post.author}}</div>
+                    <div>posted_at: {{post.created_at}} </div>
+                </div>
+                <div style="margin-top: 50px; letter-spacing: 2px; max-width: 80%;">
+                    {{post.descriptions}}
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-left: 10%; margin-top: 30px;">
+            <h6>comments_count : {{post.comment_count}}</h6>
+            
+            <div id="accordion" style="width: 70%;">
+                <div class="accordion-item">
+                    <div class="accordion-header" style="letter-spacing: 2px;">comments 👈</div>
+                    <div class="accordion-content">
+                        
+                        <div>
+                            <form method="Post" style="display: flex; flex-wrap: wrap; column-gap: 5px;">
+                                {% csrf_token %}
+                                {{comment_form|crispy }}
+                                <input type="submit" value="comment" class="btn btn-success" style="height:36px;" ></input>
+                            </form>
+                        </div>
+
+                        {% for comment in post.comments %}
+                            <div style="font-size: 15px; padding: 4px; margin-top: 5px; border-radius:20%; display: inline-block; border: 2px solid gray;">
+                                {{comment}}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </section>
+
+        <script src="{% static 'posts/js/accordian.js' %}" defer></script>
+    </div>
+{% endblock %}

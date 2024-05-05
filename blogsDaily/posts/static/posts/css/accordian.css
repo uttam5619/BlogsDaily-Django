@@ -1,0 +1,19 @@
+.accordion-item {
+   
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    cursor: pointer;
+    padding: 10px;
+    color:whitesmoke
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}

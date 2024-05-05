@@ -7,20 +7,32 @@
             style="width:100%; height: 100%; position: fixed; z-index: -1; "
         ></img>
 
-        <div class="bg-dark text-white" style=" opacity: 70%;">
+        <div class="bg-dark text-white" style=" opacity: 80%;">
         <h1 style="text-align: center; color: tomato;">Home</h1>
         
         {% for post in posts %}
-            <article style="margin: auto; padding: 10px; color:thistle; width:40%; ">
-                <h2>{{post.title}}</h2>
-                <div style="font-size: 20px;">subject: {{post.subject}}</div>
-                <div style="display: flex; flex-wrap:wrap; column-gap: 20px; color: tomato;">
-                    <div>author :  {{post.author}}</div>
-                    <div style="font-size: 12px; padding-top: 3px;">posted_at :  {{post.created_at}}</div>
-                </div>
-                
-                <h6>{{post.descriptions}}</h6>
-            </article>
+            <section style="width:50%; margin: auto; margin-top: 50px; display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 10px;">
+                <section style="width:25%;" >
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }} Image" style="width: 140px; border-radius: 100%;">
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+                </section>
+
+                <article style="color:thistle; width:70%; ">
+                    
+                    <a href="/post/{{post.url}}" style="color: thistle; text-decoration: none;">
+                        <h2>{{post.title}}</h2>
+                    </a>
+                    <div style="font-size: 20px;">subject: {{post.subject}}</div>
+                    <div style="display: flex; flex-wrap:wrap; column-gap: 20px; color: tomato;">
+                        <div>author :  {{post.author}}</div>
+                        <div style="font-size: 12px; padding-top: 3px;">posted_at :  {{post.created_at}}</div>
+                    </div>
+                    
+                </article>
+            </section>
         {% endfor %}
         </div>
 
