@@ -34,7 +34,7 @@ def blog_page(request, url):
             instance= comment_form.save(commit=False)
             instance.commented_on = post
             instance.save()
-            return redirect('posts:blog_page', pk=post.postId)
+            return redirect('posts:blog_page', url=post.url)
     else:
         comment_form=CommentForm()
     context ={
