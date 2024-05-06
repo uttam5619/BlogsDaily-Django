@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostModelForm, CommentForm
-
+from authentication.middlewares import auth
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+@auth
 def home(request):
     posts = Post.objects.all()
     context={
@@ -11,12 +14,13 @@ def home(request):
     return render(request, 'posts/home.html',context)
 
 
+@auth
 def post(request):
     if request.method == 'POST':
         form =PostModelForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('posts:home')
 
     else:
         form = PostModelForm()
@@ -25,7 +29,7 @@ def post(request):
     }
     return render(request, 'posts/posts.html', context)
 
-
+@auth
 def blog_page(request, url):
     post= Post.objects.get(url=url)
     if request.method == 'POST':
@@ -43,12 +47,14 @@ def blog_page(request, url):
     }
     return render(request, 'posts/blog_page.html', context )
 
-
+@auth
 def about(request):
     return render(request, 'posts/about.html')
 
+@auth
 def profile(request):
     return render(request, 'posts/profile.html')
 
+@auth
 def contact(request):
     return render(request, 'posts/contact.html')

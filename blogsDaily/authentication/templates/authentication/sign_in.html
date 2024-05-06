@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn</title>
+    <link rel="stylesheet"href="{% static 'authentication/css/sign_in.css'%}"></link>
+</head>
+<body>
+    
+    <div>
+        <h1>SignUp</h1>
+        {% if messages %}
+            {% for message in messages %}
+                <h5 style="color: coral;">{{message}}</h5>
+            {% endfor %}
+        {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div>
+            <input type="text" placeholder="username" required name="username">
+        </div>
+
+        <div>
+            <input type="password" placeholder="password" required name="password">
+        </div>
+
+        <div>
+            <input type="submit" value="SignIn" class="btn btn-success">
+        </div>
+
+        <div>
+            Already Registered? <a href="{% url 'authentication:signUp' %}">SignIn</a>
+        </div>
+
+        <div>
+            Forget Paddword <a href="#">Reset</a>
+        </div>
+
+    </form>
+    </div>
+
+
+</body>
+</html>
