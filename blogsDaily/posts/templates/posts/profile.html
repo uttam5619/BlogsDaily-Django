@@ -1,8 +1,47 @@
 {% extends "posts/base_layout.html" %}
+{%load crispy_forms_tags %}
 
 {% block content %}
-    <div class="bg-dark text-white" style="min-height: 100vh ;">
-        this is profile page
-        hello
+
+    <img src="https://media.swncdn.com/via/images/2023/03/06/29698/29698-istockgetty-images-plusalexandrapp_source_file.jpg"
+        style="width: 100%; height: 100%; position:fixed; z-index: -1; object-fit: cover;"
+    ></img>
+
+    <div class="bg-dark text-white" style="min-height: 100vh; opacity: 80%;">
+
+        <h2 style="color: tomato; text-align: center;">Profile</h2>
+
+        <section style="width: 30%; margin: auto; margin-top: 50px;"> 
+            
+            
+            <div style="display: flex; justify-content: space-between;">
+                <div style="padding:5px;">Hello {{user.username}}</div>
+                <a href="{% url 'posts:modify_profile' %}"><button type="submit" class="btn btn-success">Edit Profile</button></a>
+            </div>
+            
+            <hr/>
+
+            <section style=" display: flex; column-gap: 40px;">
+            
+                <section style="width: 35%;">
+                    <img src="{{ user.profile.profile_image.url }}" alt="profile-image" style=" width: 125px; height:130px; border-radius: 100%; object-fit: cover;"></img>
+                </section>
+
+                <section style="padding: 20px; width: 60%; ">
+                    <h4>User Name : {{user.username}}</h4>
+                    {% if user.email %}
+                        <h5>Email: {{user.email}}</h5>
+                    {% else %}
+                        <p>Email : <span style="color: tomato;">NOT SPECIFIED</span> </p>
+                    {% endif %}
+                </section>
+            
+            </section>
+        </section>
+
+
+
     </div>
 {% endblock %}
+
+

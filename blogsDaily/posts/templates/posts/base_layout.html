@@ -12,11 +12,14 @@
 
     <nav class="navbar bg-dark border-bottom border-body nav justify-content-between" data-bs-theme="dark">
 
-        <input type="text" style="width: 25vw; padding: 5px; margin-left:150px ;" placeholder="search">
+        <section style="display: flex;column-gap: 4px;">
+            <input type="text" style="width: 25vw; padding: 5px; margin-left:150px ;" placeholder="search"></input>
+            <div>
+                <input type="submit" class="btn btn-success" value="search" style="border-radius: 30%;"></input>
+            </div>
+        </section>
 
-        </input>
-
-        <section class="nav justify-content-between" style="padding-right: 30px;">
+        <section class="nav justify-content-between " style="padding-right: 30px; column-gap: 20px;">
         <ul class="nav justify-content-center" >
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'posts:home'  %}">
@@ -26,6 +29,11 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'posts:post'  %}">
                     <h6 style="color: bisque;">Post</h6>
+                </a>
+            </li>
+            <li class="nav-item" style="padding-bottom:5px ;">
+                <a class="nav-link" href="{% url 'posts:suggestAI'  %}" >
+                    <h6 style="color: bisque;">SuggestAI</h6>
                 </a>
             </li>
             <li class="nav-item">
@@ -50,13 +58,14 @@
             </li>
             <li class="nav-item" style="padding-bottom:5px ;">
                 <a class="nav-link" href="{% url 'authentication:signOut'  %}" >
-                  <button type="submit" class="btn btnp-danger" style="color: bisque;">LogOut</button>
+                  <button type="submit" class="btn btn-danger" style="color: bisque; ">LogOut</button>
                 </a>
             </li>
+            
         </ul>
 
         <a href="{% url 'posts:profile'  %}">
-            <img src="https://th.bing.com/th/id/R.8c275b59e1feb85312f33fc82ea94744?rik=fb%2bKSAhV%2fTqB2g&pid=ImgRaw&r=0&sres=1&sresct=1" style=" width:40px; border-radius:100%;">
+            <img src="https://th.bing.com/th/id/R.8c275b59e1feb85312f33fc82ea94744?rik=fb%2bKSAhV%2fTqB2g&pid=ImgRaw&r=0&sres=1&sresct=1" style=" width:40px; border-radius:100%; margin-top: 5px;">
             </img>
         </a>
 

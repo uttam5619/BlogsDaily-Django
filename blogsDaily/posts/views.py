@@ -17,7 +17,8 @@ def home(request):
 @auth
 def post(request):
     if request.method == 'POST':
-        form =PostModelForm(request.POST)
+        form =PostModelForm(request.POST, request.FILES)
+        print(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('posts:home')
@@ -53,8 +54,22 @@ def about(request):
 
 @auth
 def profile(request):
-    return render(request, 'posts/profile.html')
+    user = request.user
+    context ={
+        'user': user
+    }
+    return render(request, 'posts/profile.html', context)
 
 @auth
 def contact(request):
     return render(request, 'posts/contact.html')
+
+
+@auth
+def modify_profile(request):
+    return render(request, 'posts/modify_profile.html')
+
+
+@auth
+def suggest_gpt(request):
+    return render(request, 'posts/suggest_gpt.html')

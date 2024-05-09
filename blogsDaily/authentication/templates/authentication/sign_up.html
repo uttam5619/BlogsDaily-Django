@@ -1,13 +1,21 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
+    <link rel="stylesheet" href="{% static 'authentication/css/signUp.css' %}">
 </head>
 <body>
+
+    <img src="https://wallpapers.com/images/hd/dark-aesthetic-computer-bloody-splashes-background-ue5gn4ymr6djij0y.jpg"
+        style="width: 100%; height: 100%; position:fixed; z-index: -1; object-fit: cover;"
+    ></img>
     
-    <div>
+    <h2 style="font-size: 40px; padding-top: 50px;  color: tomato; text-align: center;">BlogsDaily</h2>
+
+    <div id="signUp" style="opacity: 80%;">
         <h1>SignUp</h1>
         {% if messages %}
             {% for message in messages %}
@@ -33,11 +41,11 @@
             <input type="submit" value="SignUp" class="btn btn-success">
         </div>
 
-        <div>
+        <div style="color: tomato; margin-top:5px ;">
             Already Registered? <a href="{% url 'authentication:signIn' %}">SignIn</a>
         </div>
 
-        <div>
+        <div style="color: tomato; margin-top:5px ;">
             Forget Paddword <a href="#">Reset</a>
         </div>
 

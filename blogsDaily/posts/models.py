@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
+
 
 # Create your models here.
 class Category(models.Model):
@@ -19,7 +21,7 @@ class Post(models.Model):
     author=models.CharField(max_length=200)
     descriptions=models.TextField()
     url=models.CharField(max_length=150)
-    image=models.ImageField(upload_to='post/', blank=True)
+    image=models.ImageField(upload_to='post/')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
 
@@ -40,4 +42,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_image =models.ImageField(default='default.png', upload_to='profileImages/', validators=[FileExtensionValidator(['png','jpeg','jpg','webp'])])
+
+    def __str__(self):
+        return self.user.username
 

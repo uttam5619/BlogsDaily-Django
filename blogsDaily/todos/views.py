@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import TodoModelForm
 from django.contrib.auth.decorators import login_required
 from authentication.middlewares import auth
+from .models import todo
 
 # Create your views here.
 
@@ -23,4 +24,18 @@ def todo_form(request):
 @auth
 def todo_list(request):
 
-    return render(request, 'todos/todo_list.html')
+    user = request.user
+    todos = todo.objects.filter(user=user)
+    context ={
+        'todos': todos,
+        'user' : user
+    }
+    return render(request, 'todos/todo_list.html',context)
+
+@auth
+def delete_todo(request):
+    pass
+
+@auth
+def update_todo(request):
+    pass
